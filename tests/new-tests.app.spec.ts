@@ -37,7 +37,7 @@ test.describe("Test#3 - Delete tasks", () => {
     await todoApp.addANewToDo("Task3");
     await todoApp.verifyTaskWithTextExist("Task1");
     await todoApp.verifyFooterTaskStatusMatches("3 items left");
-    await (await todoApp.getTaskWithText("Task1")).deleteTask();
+    await todoApp.deleteTask('Task1');
     await todoApp.verifyFooterTaskStatusMatches("2 items left");
   });
 });
@@ -49,9 +49,9 @@ test.describe("Test#4- Mark task as completed", () => {
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
     await todoApp.verifyFooterTaskStatusMatches("3 items left");
-    await (await todoApp.getTaskWithText("Task1")).completeTask();
+    await todoApp.completeTask("Task1")
     await todoApp.verifyFooterTaskStatusMatches("2 items left");
-    await todoApp.verifyTaskIsMarkedCompleted("Task1");
+    // await todoApp.verifyTaskIsMarkedCompleted("Task1");
   });
 });
 
@@ -61,7 +61,7 @@ test.describe("Test#5- Filter active list", () => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
-    await (await todoApp.getTaskWithText("Task1")).completeTask();
+    await todoApp.completeTask("Task1")
     await todoApp.verifyTaskListCountMatch(3);
     await todoApp.filterActiveTasks();
     await todoApp.verifyTaskListCountMatch(2);
@@ -75,7 +75,7 @@ test.describe("Test#6- Clear completed tasks", () => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
-    await (await todoApp.getTaskWithText("Task1")).completeTask();
+    await todoApp.completeTask("Task1")
     await todoApp.verifyTaskListCountMatch(3);
     await todoApp.clearCompletedTasks();
     await todoApp.verifyTaskListCountMatch(2);

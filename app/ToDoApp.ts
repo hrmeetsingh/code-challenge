@@ -75,4 +75,12 @@ export class ToDoApp {
   async verifyTaskDoesNotExist(taskText): Promise<void> {
     expect(await this.taskList.listItems.filter({ hasText: taskText })).toHaveCount(0, { timeout: 10000 });
   }
+
+  async completeTask(taskText: string): Promise<void> {
+    await (await this.getTaskWithText(taskText)).completeTask();
+  }
+
+  async deleteTask(taskText: string): Promise<void> {
+    await (await this.getTaskWithText(taskText)).deleteTask();
+  }
 }
