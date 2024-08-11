@@ -24,6 +24,10 @@ export class Task {
     await this.locator.check();
   }
 
+  async getLocator(): Promise<Locator> {
+    return await this.locator;
+  }
+
   async isChecked(): Promise<boolean> {
     return await this.locator.isChecked();
   }

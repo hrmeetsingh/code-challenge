@@ -37,9 +37,12 @@ export class ToDoApp {
     expect(elementCount).not.toBe(0);
   }
 
-  // async checkTaskWithText(text: string): Promise<void> {
-  //   await this.taskList.checkATask(text);
-  // }
+  async editTask(oldText: string, newText: string): Promise<void>{
+    const taskLocator = (await this.getTaskWithText(oldText)).getLocator();
+    await (await taskLocator).dblclick();
+    await this.taskList.editableTask.fill(newText);
+    await this.taskList.locator.press('Enter');
+  }
 
   async verifyFooterTaskStatusMatches(text: string): Promise<void> {
     expect(await this.footer.getLeftItemsText()).toMatch(text);

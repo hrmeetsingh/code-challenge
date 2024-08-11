@@ -5,11 +5,13 @@ export class TaskList{
   readonly parentLocator: Locator;
   readonly locator: Locator;
   readonly listItems: Locator;
+  readonly editableTask: Locator;
 
   constructor(parentLocator: Locator) {
     this.parentLocator = parentLocator;
     this.listItems = this.parentLocator.getByTestId('todo-item');
     this.locator = this.parentLocator.getByTestId('todo-list');
+    this.editableTask = this.locator.getByTestId('text-input');
   }
 
   async getTaskWithLabelText(searchText: string): Promise<Task> {
