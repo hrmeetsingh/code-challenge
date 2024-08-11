@@ -6,7 +6,7 @@ test.beforeEach(async ({ page, todoApp }) => {
 
 // Test # 1 - Add a new ToDo item
 test.describe("Test#1- Create ToDo item", () => {
-  test("get text", async ({ todoApp }) => {
+  test("Create a ToDo item and verify item added at the end", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
@@ -19,7 +19,7 @@ test.describe("Test#1- Create ToDo item", () => {
 
 // Test # 2 - Edit an existing todo item
 test.describe("Test#2- Edit ToDo item", () => {
-  test("get text", async ({ page, todoApp }) => {
+  test("Edit an existing task", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
@@ -31,7 +31,7 @@ test.describe("Test#2- Edit ToDo item", () => {
 
 // Test # 3 - Delete a todo item using cross
 test.describe("Test#3 - Delete tasks", () => {
-  test("Delete task", async ({ page, todoApp }) => {
+  test("Delete a task from the list", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
@@ -44,7 +44,7 @@ test.describe("Test#3 - Delete tasks", () => {
 
 // Test # 4 - Mark a task as completed
 test.describe("Test#4- Mark task as completed", () => {
-  test("get text", async ({ page, todoApp }) => {
+  test("Mark a task as completed", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
@@ -58,7 +58,7 @@ test.describe("Test#4- Mark task as completed", () => {
 
 // Test # 5 - Given the active list, only the active tasks are shown
 test.describe("Test#5- Filter active list", () => {
-  test("get text", async ({ page, todoApp }) => {
+  test("Complete a task and apply filter to get only active tasks", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
@@ -72,7 +72,7 @@ test.describe("Test#5- Filter active list", () => {
 
 // Test # 6 - When clear completed is clicked, item removed (note that completed isnt moved to the completed list after clearing)
 test.describe("Test#6- Clear completed tasks", () => {
-  test("get text", async ({ page, todoApp }) => {
+  test("Complete a task and clear completed tasks", async ({ todoApp }) => {
     await todoApp.addANewToDo("Task1");
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
