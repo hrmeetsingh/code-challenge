@@ -51,8 +51,7 @@ test.describe("Test#4- Mark task as completed", () => {
     await todoApp.verifyFooterTaskStatusMatches("3 items left");
     await (await todoApp.getTaskWithText("Task1")).completeTask();
     await todoApp.verifyFooterTaskStatusMatches("2 items left");
-    await todoApp.verifyTaskIsCompleted("Task1");
-    // await todoApp.verifyItemShowsWithGreenCheck("text1");
+    await todoApp.verifyTaskIsMarkedCompleted("Task1");
   });
 });
 

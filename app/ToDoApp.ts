@@ -13,7 +13,7 @@ export class ToDoApp {
 
   constructor(page: Page) {
     this.page = page;
-    this.locator = this.page.locator('body');
+    this.locator = this.page.locator("body");
     this.header = new TaskInput(this.locator);
     this.taskList = new TaskList(this.locator);
     this.footer = new Footer(this.page, this.locator);
@@ -37,11 +37,11 @@ export class ToDoApp {
     expect(elementCount).not.toBe(0);
   }
 
-  async editTask(oldText: string, newText: string): Promise<void>{
+  async editTask(oldText: string, newText: string): Promise<void> {
     const taskLocator = (await this.getTaskWithText(oldText)).getLocator();
     await (await taskLocator).dblclick();
     await this.taskList.editableTask.fill(newText);
-    await this.taskList.locator.press('Enter');
+    await this.taskList.locator.press("Enter");
   }
 
   async verifyFooterTaskStatusMatches(text: string): Promise<void> {
@@ -68,11 +68,11 @@ export class ToDoApp {
     expect(await this.taskList.getLastItemText()).toBe(text);
   }
 
-  async verifyTaskIsCompleted(taskText): Promise<void> {
-    // expect(await (await this.getTaskWithText('Task1')).
+  async verifyTaskIsMarkedCompleted(taskText): Promise<void> {
+    expect(await this.taskList.listItems.filter({hasText: taskText})).toHaveClass("completed", {timeout: 5000});
   }
 
   async verifyTaskDoesNotExist(taskText): Promise<void> {
-    expect(await this.taskList.listItems.filter({hasText: taskText})).toHaveCount(0, {timeout: 10000});
+    expect(await this.taskList.listItems.filter({ hasText: taskText })).toHaveCount(0, { timeout: 10000 });
   }
 }
