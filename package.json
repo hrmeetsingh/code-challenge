@@ -4,7 +4,10 @@
   "description": "SET coding challenge",
   "scripts": {
     "run": "npx tsx ./src/todo-app.ts",
-    "test": "playwright test --project=chromium"
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:all": "playwright test"
   },
   "private": true,
   "license": "UNLICENSED",
