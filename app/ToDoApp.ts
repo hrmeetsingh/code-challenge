@@ -72,8 +72,7 @@ export class ToDoApp {
     // expect(await (await this.getTaskWithText('Task1')).
   }
 
-  async verifyTaskIsHidden(taskText): Promise<void> {
-    expect((await this.getTaskWithText(taskText)).locator).toBeHidden();
-    // expect(await )
+  async verifyTaskDoesNotExist(taskText): Promise<void> {
+    expect(await this.taskList.listItems.filter({hasText: taskText})).toHaveCount(0, {timeout: 10000});
   }
 }
