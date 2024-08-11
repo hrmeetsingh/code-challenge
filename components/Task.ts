@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator } from "@playwright/test";
 
 export class Task {
   readonly parentLocator: Locator;
@@ -32,7 +32,7 @@ export class Task {
     return await this.locator.isChecked();
   }
 
-  async isCompleted(): Promise<void>{
+  async isCompleted(): Promise<void> {
     const classList = await this.locator.evaluate(el => [...el.classList]);
     console.log(classList);
   }
@@ -50,28 +50,7 @@ export class Task {
     await this.CHECKBOX.click();
   }
 
-  async getTaskLocatorWithText(taskText: string): Promise<Locator>{
-    return await this.locator.filter({hasText: taskText});
-  }
-
-  // async selectTask(taskText: string): Promise<Locator>{
-  //   return this.locator
-  // }
-
-  async editTask(taskText: string): Promise<void> {
-    // console.log(await this.locator.isVisible());
-    // await this.locator.getByTestId("todo-item-label").dblclick();
-    // const task = await this.locator.filter({hasText: taskText}).waitFor();
-    // await task.dblclick();
-    // await this.locator.getByTestId("text-input").fill(taskText);
-    // const element = await this.page.getByTestId("todo-item").nth(1).waitFor();
-    // await this.page.getByTestId("todo-item").nth(1).dblclick();
-    // await this.page.getByTestId("text-input").press(taskText);
-    // const todoItems = this.page.getByRole("listitem");
-    // const secondTodo = todoItems.filter({ hasText: "Task1" });
-    // await secondTodo.dblclick();
-    // expect(secondTodo.getByRole("textbox", { name: "Edit" })).toHaveValue(
-    //   TODO_ITEMS[1],
-    // );
+  async getTaskLocatorWithText(taskText: string): Promise<Locator> {
+    return await this.locator.filter({ hasText: taskText });
   }
 }
