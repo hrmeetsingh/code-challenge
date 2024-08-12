@@ -1,8 +1,8 @@
 import { Locator, Page, expect } from "@playwright/test";
-import { TaskList } from "../components/TaskList";
-import { Footer } from "../components/Footer";
-import { Task } from "../components/Task";
-import { TaskInput } from "../components/TaskInput";
+import { TaskList } from "@components/TaskList";
+import { Footer } from "@components/Footer";
+import { Task } from "@components/Task";
+import { TaskInput } from "@components/TaskInput";
 
 export class ToDoApp {
   readonly page: Page;
@@ -68,11 +68,11 @@ export class ToDoApp {
     expect(await this.taskList.getLastItemText()).toBe(text);
   }
 
-  async verifyTaskIsMarkedCompleted(taskText): Promise<void> {
+  async verifyTaskIsMarkedCompleted(taskText: string): Promise<void> {
     expect(await this.taskList.listItems.filter({hasText: taskText})).toHaveClass("completed", {timeout: 5000});
   }
 
-  async verifyTaskDoesNotExist(taskText): Promise<void> {
+  async verifyTaskDoesNotExist(taskText: string): Promise<void> {
     expect(await this.taskList.listItems.filter({ hasText: taskText })).toHaveCount(0, { timeout: 10000 });
   }
 

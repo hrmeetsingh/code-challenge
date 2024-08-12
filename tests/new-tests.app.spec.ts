@@ -1,4 +1,4 @@
-import test from "../lib/BaseTest";
+import test from "@lib/BaseTest";
 
 test.beforeEach(async ({ page, todoApp }) => {
   await page.goto("https://todomvc.com/examples/react/dist");
@@ -51,7 +51,7 @@ test.describe("Test#4- Mark task as completed", () => {
     await todoApp.verifyFooterTaskStatusMatches("3 items left");
     await todoApp.completeTask("Task1")
     await todoApp.verifyFooterTaskStatusMatches("2 items left");
-    // await todoApp.verifyTaskIsMarkedCompleted("Task1");
+    await todoApp.verifyTaskIsMarkedCompleted("Task1");
   });
 });
 
