@@ -69,7 +69,7 @@ export class ToDoApp {
   }
 
   async verifyTaskIsMarkedCompleted(taskText: string): Promise<void> {
-    expect(await this.taskList.listItems.filter({hasText: taskText})).toHaveClass("completed", {timeout: 5000});
+    expect(await this.taskList.listItems.filter({ hasText: taskText })).toHaveClass("completed", { timeout: 5000 });
   }
 
   async verifyTaskDoesNotExist(taskText: string): Promise<void> {

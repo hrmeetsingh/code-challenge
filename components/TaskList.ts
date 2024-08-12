@@ -1,7 +1,7 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator } from "@playwright/test";
 import { Task } from "./Task";
 
-export class TaskList{
+export class TaskList {
   readonly parentLocator: Locator;
   readonly locator: Locator;
   readonly listItems: Locator;
@@ -19,7 +19,7 @@ export class TaskList{
   }
 
   async countTaskWithText(searchText: string): Promise<number> {
-    return await this.listItems.filter({hasText: searchText}).count();
+    return await this.listItems.filter({ hasText: searchText }).count();
   }
 
   async getCountOfTasks(): Promise<number> {

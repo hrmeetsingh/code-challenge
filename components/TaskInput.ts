@@ -1,7 +1,6 @@
-import { Page, Locator } from "@playwright/test";
+import { Locator } from "@playwright/test";
 
-export class TaskInput{
-  readonly page: Page;
+export class TaskInput {
   readonly parentLocator: Locator;
   readonly locator: Locator;
 

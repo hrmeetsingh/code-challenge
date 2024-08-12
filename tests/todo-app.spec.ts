@@ -24,7 +24,7 @@ test.describe("Test#2- Edit ToDo item", () => {
     await todoApp.addANewToDo("Task2");
     await todoApp.addANewToDo("Task3");
     await todoApp.verifyFooterTaskStatusMatches("3 items left");
-    await todoApp.editTask("Task2","New Task 2")
+    await todoApp.editTask("Task2", "New Task 2")
     await todoApp.verifyTaskWithTextExist("New Task 2");
   });
 });

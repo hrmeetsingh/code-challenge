@@ -3,7 +3,6 @@ import { Locator } from "@playwright/test";
 export class Task {
   readonly parentLocator: Locator;
   readonly locator: Locator;
-  readonly listItems: Locator;
   readonly taskText: string;
   readonly CROSS_BUTTON: Locator;
   readonly CHECKBOX: Locator;
